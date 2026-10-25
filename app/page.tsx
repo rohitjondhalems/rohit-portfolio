@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import EmbeddingSpace from './EmbeddingSpace';
 
 export default function Home() {
   const [filter, setFilter] = useState<'all' | 'genai' | 'mldl'>('all');
@@ -221,7 +222,6 @@ export default function Home() {
       card: "from-slate-900/60 to-slate-950/80 border-slate-800/80 shadow-[0_30px_100px_rgba(0,0,0,0.8)]",
       navBtn: "bg-slate-900/80 border-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-teal-400",
       footer: "border-slate-900 text-slate-700",
-      synapseBg: "#1e293b",
       glow: "hover:shadow-[0_20px_45px_rgba(20,184,166,0.15)] hover:border-teal-500/50",
       projectGlow: "hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)]",
       pillContainer: "bg-slate-950/80 border-slate-800",
@@ -237,7 +237,6 @@ export default function Home() {
       card: "from-zinc-950/60 to-black border-zinc-900 shadow-[0_30px_100px_rgba(0,0,0,0.9)]",
       navBtn: "bg-zinc-950/80 border-zinc-900 hover:bg-zinc-900 text-zinc-300 hover:text-teal-400",
       footer: "border-zinc-900 text-zinc-700",
-      synapseBg: "#18181b",
       glow: "hover:shadow-[0_20px_45px_rgba(20,184,166,0.12)] hover:border-teal-500/50",
       projectGlow: "hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]",
       pillContainer: "bg-zinc-950/80 border-zinc-900",
@@ -253,7 +252,6 @@ export default function Home() {
       card: "from-white to-slate-100/90 border-slate-200 shadow-xl shadow-slate-100",
       navBtn: "bg-white border-slate-200 hover:bg-slate-100 text-slate-700 hover:text-teal-600 shadow-sm",
       footer: "border-slate-200 text-slate-400",
-      synapseBg: "#e2e8f0",
       glow: "hover:border-teal-500/50 hover:shadow-[0_15px_30px_rgba(20,184,166,0.12)]",
       projectGlow: "hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] hover:border-slate-300",
       pillContainer: "bg-white border-slate-200 shadow-inner",
@@ -269,7 +267,6 @@ export default function Home() {
       card: "from-indigo-900/40 to-indigo-950/80 border-indigo-900/80 shadow-[0_30px_100px_rgba(0,0,0,0.8)]",
       navBtn: "bg-indigo-950/80 border-indigo-900 hover:bg-indigo-900 text-indigo-200 hover:text-teal-400",
       footer: "border-indigo-900 text-indigo-700",
-      synapseBg: "#312e81",
       glow: "hover:shadow-[0_20px_45px_rgba(20,184,166,0.15)] hover:border-teal-500/50",
       projectGlow: "hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)]",
       pillContainer: "bg-indigo-950/80 border-indigo-900",
@@ -287,18 +284,6 @@ export default function Home() {
   return (
     <div className={`min-h-screen ${s.bg} ${s.text} overflow-x-hidden relative transition-colors duration-500 selection:bg-teal-500 selection:text-slate-950`}>
       
-      {/* Dynamic CSS Keyframes for Neural Net Signal Propagation */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes propagate {
-          to {
-            stroke-dashoffset: -20;
-          }
-        }
-        .synapse-flow {
-          stroke-dasharray: 4, 10;
-          animation: propagate 1.2s linear infinite;
-        }
-      `}} />
 
       {/* 3D Space Background Grid & Radial Glow Orbs */}
       <div className={`absolute inset-0 ${s.grid} pointer-events-none transition-all duration-500`} />
@@ -363,64 +348,9 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Middle Column: Neural Network Visualization (Spans 3 cols) */}
+            {/* Middle Column: 3D embedding-space visual (Spans 3 cols) */}
             <div className="lg:col-span-3 flex items-center justify-center min-h-[220px]">
-              <svg viewBox="0 0 200 200" className="w-full max-w-[240px] h-auto select-none opacity-90 group-hover:opacity-100 transition-opacity duration-500">
-                <defs>
-                  <filter id="node-glow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
-
-                {/* Layer Connection Synapses (Static background links mapped to s.synapseBg) */}
-                <g stroke={s.synapseBg} strokeWidth="1" className="transition-colors duration-500">
-                  {/* Input Layer to Hidden Layer */}
-                  <line x1="30" y1="40" x2="100" y2="30" />
-                  <line x1="30" y1="40" x2="100" y2="75" />
-                  <line x1="30" y1="100" x2="100" y2="75" />
-                  <line x1="30" y1="100" x2="100" y2="125" />
-                  <line x1="30" y1="160" x2="100" y2="125" />
-                  <line x1="30" y1="160" x2="100" y2="170" />
-
-                  {/* Hidden Layer to Output Layer */}
-                  <line x1="100" y1="30" x2="170" y2="65" />
-                  <line x1="100" y1="75" x2="170" y2="65" />
-                  <line x1="100" y1="125" x2="170" y2="135" />
-                  <line x1="100" y1="170" x2="170" y2="135" />
-                </g>
-
-                {/* Animated Flowing Synapses (Active feedforward pathways) */}
-                <g strokeWidth="1.5" fill="none">
-                  <path d="M 30 40 L 100 75" stroke="#14b8a6" className="synapse-flow" />
-                  <path d="M 30 100 L 100 125" stroke="#6366f1" className="synapse-flow" />
-                  <path d="M 30 160 L 100 125" stroke="#14b8a6" className="synapse-flow" />
-                  <path d="M 100 75 L 170 65" stroke="#6366f1" className="synapse-flow" />
-                  <path d="M 100 125 L 170 135" stroke="#14b8a6" className="synapse-flow" />
-                </g>
-
-                {/* Layer Neurons (Nodes) */}
-                {/* Input Layer (Left) */}
-                <g fill="#475569">
-                  <circle cx="30" cy="40" r="5" />
-                  <circle cx="30" cy="100" r="5" />
-                  <circle cx="30" cy="160" r="5" />
-                </g>
-
-                {/* Hidden Layer (Middle) */}
-                <g fill="#4f46e5" filter="url(#node-glow)">
-                  <circle cx="100" cy="30" r="5.5" />
-                  <circle cx="100" cy="75" r="5.5" className="animate-pulse" style={{ animationDelay: '0.2s' }} />
-                  <circle cx="100" cy="125" r="5.5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
-                  <circle cx="100" cy="170" r="5.5" />
-                </g>
-
-                {/* Output Layer (Right) */}
-                <g fill="#0d9488" filter="url(#node-glow)">
-                  <circle cx="170" cy="65" r="6" className="animate-pulse" />
-                  <circle cx="170" cy="135" r="6" className="animate-pulse" style={{ animationDelay: '0.4s' }} />
-                </g>
-              </svg>
+              <EmbeddingSpace theme={theme} />
             </div>
             
             {/* Right Column: Quick Connect Floating Glass Panel (Spans 3 cols with SVG Vector Icons) */}
