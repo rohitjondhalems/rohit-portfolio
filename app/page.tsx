@@ -122,6 +122,19 @@ export default function Home() {
       ]
     },
     {
+      title: "Multi-Series Forecasting System",
+      tag: "Time-Series MLOps",
+      category: "mldl",
+      desc: "Hourly forecasting service pairing a global LightGBM quantile model with a zero-shot Chronos foundation model, served via FastAPI with a Streamlit demo.",
+      metrics: "One global model serves unseen series from their history alone, with conformal-calibrated 50%/90% prediction intervals.",
+      bullets: [
+        "Trained 5 quantile models across 10 series (245K rows), with and without covariates, for an honest exogenous-feature ablation.",
+        "A train–serve parity test caught rolling-window leakage and unfrozen category codes; fixed and guarded in GitHub Actions CI.",
+        "Dockerised API + UI started with a single docker compose up, with MLflow experiment tracking on Azure ML."
+      ],
+      github: "https://github.com/rohitjondhalems/multi-series-forecasting-system"
+    },
+    {
       title: "EEG Gesture Prediction for Paralysis",
       tag: "Healthcare Deep Learning",
       category: "mldl",
@@ -538,6 +551,16 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
+                {proj.github && (
+                  <a
+                    href={proj.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative self-start text-xs font-mono text-teal-400 hover:text-teal-300 underline-offset-4 hover:underline"
+                  >
+                    View source on GitHub →
+                  </a>
+                )}
               </div>
             ))}
           </div>
