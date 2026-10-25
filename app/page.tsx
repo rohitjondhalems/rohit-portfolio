@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import EmbeddingSpace from './EmbeddingSpace';
+import BackgroundField from './BackgroundField';
 
 export default function Home() {
   const [filter, setFilter] = useState<'all' | 'genai' | 'mldl'>('all');
@@ -24,8 +25,8 @@ export default function Home() {
       "MLflow, KubeFlow, Airflow, Docker, Kubernetes, DVC, CI/CD/CT"
     ],
     genAI: [
-      "LangChain, LangGraph, LangFuse, RAG, AI Agents, LLMs (GPT-4, Claude, Mistral)",
-      "LiteLLM, Whisper AI, Deep Learning, Computer Vision, Embeddings",
+      "LangChain, LangGraph, LangFuse, RAG, AI Agents, LLMs (GPT-5 family, GPT-4o, Claude, Mistral)",
+      "LiteLLM, vLLM, Whisper AI, Deep Learning, Computer Vision, Embeddings",
       "Azure AI Search, Document Intelligence, LoRA, QLoRA fine-tuning"
     ],
     languagesTools: [
@@ -218,7 +219,6 @@ export default function Home() {
       heading: "text-white",
       subtext: "text-slate-400",
       border: "border-slate-800/80",
-      grid: "bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]",
       card: "from-slate-900/60 to-slate-950/80 border-slate-800/80 shadow-[0_30px_100px_rgba(0,0,0,0.8)]",
       navBtn: "bg-slate-900/80 border-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-teal-400",
       footer: "border-slate-900 text-slate-700",
@@ -233,7 +233,6 @@ export default function Home() {
       heading: "text-white",
       subtext: "text-zinc-400",
       border: "border-zinc-900",
-      grid: "bg-[linear-gradient(to_right,#09090b_1px,transparent_1px),linear-gradient(to_bottom,#09090b_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]",
       card: "from-zinc-950/60 to-black border-zinc-900 shadow-[0_30px_100px_rgba(0,0,0,0.9)]",
       navBtn: "bg-zinc-950/80 border-zinc-900 hover:bg-zinc-900 text-zinc-300 hover:text-teal-400",
       footer: "border-zinc-900 text-zinc-700",
@@ -248,7 +247,6 @@ export default function Home() {
       heading: "text-slate-950",
       subtext: "text-slate-500",
       border: "border-slate-200",
-      grid: "bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40",
       card: "from-white to-slate-100/90 border-slate-200 shadow-xl shadow-slate-100",
       navBtn: "bg-white border-slate-200 hover:bg-slate-100 text-slate-700 hover:text-teal-600 shadow-sm",
       footer: "border-slate-200 text-slate-400",
@@ -263,7 +261,6 @@ export default function Home() {
       heading: "text-white",
       subtext: "text-indigo-300",
       border: "border-indigo-900",
-      grid: "bg-[linear-gradient(to_right,#1e1b4b_1px,transparent_1px),linear-gradient(to_bottom,#1e1b4b_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]",
       card: "from-indigo-900/40 to-indigo-950/80 border-indigo-900/80 shadow-[0_30px_100px_rgba(0,0,0,0.8)]",
       navBtn: "bg-indigo-950/80 border-indigo-900 hover:bg-indigo-900 text-indigo-200 hover:text-teal-400",
       footer: "border-indigo-900 text-indigo-700",
@@ -285,8 +282,8 @@ export default function Home() {
     <div className={`min-h-screen ${s.bg} ${s.text} overflow-x-hidden relative transition-colors duration-500 selection:bg-teal-500 selection:text-slate-950`}>
       
 
-      {/* 3D Space Background Grid & Radial Glow Orbs */}
-      <div className={`absolute inset-0 ${s.grid} pointer-events-none transition-all duration-500`} />
+      {/* 3D network field behind the whole page (replaces the flat grid) */}
+      <BackgroundField theme={theme} />
       
       {/* Glowing Ambient Light Orbs */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-teal-500/10 blur-[120px] pointer-events-none" />
