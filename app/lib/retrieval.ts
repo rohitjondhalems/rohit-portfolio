@@ -1,5 +1,5 @@
 /**
- * BM25 retrieval over the knowledge base. ~40 short chunks, so a keyword index built once
+ * BM25 retrieval over the knowledge base. ~25 short chunks, so a keyword index built once
  * per server instance is fast, free and deterministic — no embedding API needed.
  */
 import { knowledgeBase, type KnowledgeEntry } from "./knowledge";
