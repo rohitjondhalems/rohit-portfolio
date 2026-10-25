@@ -16,7 +16,7 @@ A small retrieval-augmented assistant that answers visitors' questions from the 
 question ─► validate (≤500 chars, last 6 turns, per-IP rate limit)
          ─► BM25 retrieval over ~25 passages (CV + app/content.ts)
          ─► greeting / off-topic / injection?  → canned reply, no LLM call
-         ─► Groq · Llama 3.3 70B (free tier)  → Claude API fallback → extractive answer
+         ─► Groq · GPT-OSS 120B (free tier)  → Claude API fallback → extractive answer
          ─► streamed text + X-Chat-Sources header → source chips in the UI
 ```
 

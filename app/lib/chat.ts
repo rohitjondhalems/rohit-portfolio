@@ -1,7 +1,7 @@
 /**
  * Chat orchestration for the "Ask about Rohit" bot: input validation, retrieval,
  * prompt assembly and the provider chain
- *   Groq (free tier, Llama 3.3 70B)  →  Claude API  →  extractive answer (no LLM).
+ *   Groq (free tier, GPT-OSS 120B)  →  Claude API  →  extractive answer (no LLM).
  *
  * Kept free of Next.js imports so the eval script can exercise it directly.
  */
@@ -142,14 +142,20 @@ function sseToText(body: ReadableStream<Uint8Array>, pick: (data: unknown) => st
 class ProviderStreamError extends Error {}
 
 async function callGroq(system: string, messages: ChatMessage[], key: string): Promise<ReadableStream<Uint8Array>> {
+  // llama-3.3-70b-versatile was retired by Groq on 2026-08-16; gpt-oss-120b is their recommended replacement.
+  const model = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
   const res = await fetch(`${process.env.GROQ_BASE_URL || "https://api.groq.com/openai/v1"}/chat/completions`, {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+      model,
       messages: [{ role: "system", content: system }, ...messages],
       temperature: 0.2,
-      max_tokens: LIMITS.maxOutputTokens,
+      // gpt-oss is a reasoning model: its (hidden) reasoning tokens count against the cap, so keep effort low
+      // and leave headroom for the visible answer.
+      ...(model.startsWith("openai/gpt-oss")
+        ? { reasoning_effort: "low", max_tokens: LIMITS.maxOutputTokens * 3 }
+        : { max_tokens: LIMITS.maxOutputTokens }),
       stream: true,
     }),
     signal: AbortSignal.timeout(20000),

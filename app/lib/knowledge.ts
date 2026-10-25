@@ -61,7 +61,7 @@ const aboutBot: KnowledgeEntry = {
   section: "Site",
   text:
     "This 'Ask about Rohit' assistant is a small retrieval-augmented generation (RAG) chatbot that Rohit built for his " +
-    "portfolio. It retrieves passages from his CV and this website with BM25 keyword ranking, then an LLM (Llama 3.3 70B " +
+    "portfolio. It retrieves passages from his CV and this website with BM25 keyword ranking, then an LLM (GPT-OSS 120B " +
     "via Groq, with Claude as a fallback) answers only from those passages and cites them. It refuses off-topic questions " +
     "and says so when the answer is not in his CV or site.",
 };
