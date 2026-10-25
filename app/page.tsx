@@ -12,7 +12,7 @@ export default function Home() {
     email: "rohitjondhalems@gmail.com",
     phone: "+91 7447783780",
     location: "Mumbai, India",
-    linkedin: "https://linkedin.com/in/rohit-jondhale-datascientist28081990",
+    linkedin: "https://linkedin.com/in/rohit-jondhale-ai-engineer",
     flowcv: "/Rohit_Jondhale_AI_Engineer_latest_CV.pdf", // Aligned with your added file
   };
 
