@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import EmbeddingSpace from './EmbeddingSpace';
 import BackgroundField from './BackgroundField';
+import CapabilityVisual from './CapabilityVisual';
 
 export default function Home() {
   const [filter, setFilter] = useState<'all' | 'genai' | 'mldl'>('all');
@@ -398,7 +399,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             <div className={`p-6 rounded-xl bg-gradient-to-b ${s.card} backdrop-blur-sm shadow-lg transform-gpu transition-all duration-500 hover:[transform:rotateX(4deg)_rotateY(-4deg)_translateY(-8px)] ${s.glow}`}>
-              <div className="w-10 h-10 rounded-lg bg-teal-500/10 flex items-center justify-center border border-teal-500/30 text-teal-400 font-mono mb-4 font-bold">A</div>
+              <CapabilityVisual variant="agents" theme={theme} />
               <h3 className={`font-bold ${theme === 'white' ? 'text-slate-950' : 'text-white'} mb-3 text-lg`}>GenAI & AI Agents</h3>
               <ul className="space-y-2 text-xs text-slate-400 font-mono">
                 {skills.genAI.map((sk, i) => <li key={i} className={theme === 'white' ? 'text-slate-600' : 'text-slate-400'}>• {sk}</li>)}
@@ -406,7 +407,7 @@ export default function Home() {
             </div>
 
             <div className={`p-6 rounded-xl bg-gradient-to-b ${s.card} backdrop-blur-sm shadow-lg transform-gpu transition-all duration-500 hover:[transform:rotateX(4deg)_rotateY(-4deg)_translateY(-8px)] ${s.glow}`}>
-              <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center border border-indigo-500/30 text-indigo-400 font-mono mb-4 font-bold">M</div>
+              <CapabilityVisual variant="pipeline" theme={theme} />
               <h3 className={`font-bold ${theme === 'white' ? 'text-slate-950' : 'text-white'} mb-3 text-lg`}>Cloud & MLOps</h3>
               <ul className="space-y-2 text-xs text-slate-400 font-mono font-mono">
                 {skills.cloudMLOps.map((sk, i) => <li key={i} className={theme === 'white' ? 'text-slate-600' : 'text-slate-400'}>• {sk}</li>)}
@@ -414,7 +415,7 @@ export default function Home() {
             </div>
 
             <div className={`p-6 rounded-xl bg-gradient-to-b ${s.card} backdrop-blur-sm shadow-lg transform-gpu transition-all duration-500 hover:[transform:rotateX(4deg)_rotateY(-4deg)_translateY(-8px)] ${s.glow}`}>
-              <div className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 text-slate-300 font-mono mb-4 font-bold">D</div>
+              <CapabilityVisual variant="data" theme={theme} />
               <h3 className={`font-bold ${theme === 'white' ? 'text-slate-950' : 'text-white'} mb-3 text-lg`}>Languages & Tools</h3>
               <ul className="space-y-2 text-xs text-slate-400 font-mono">
                 {skills.languagesTools.map((sk, i) => <li key={i} className={theme === 'white' ? 'text-slate-600' : 'text-slate-400'}>• {sk}</li>)}
