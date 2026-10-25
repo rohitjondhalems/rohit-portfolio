@@ -34,6 +34,19 @@ export default function Home() {
 
   const projects = [
     {
+      title: "InvoiceLens MCP Server",
+      tag: "MCP & Agentic RAG",
+      category: "genai",
+      desc: "MCP server exposing invoice ingestion, semantic search and validated extraction as tools any LangGraph agent or Claude client can call, with a REST API on the same index.",
+      metrics: "One server, reusable from any project: agents discover the three tools at runtime, with no shared code or keys on the client side.",
+      bullets: [
+        "Hybrid chunking keeps tables, header fields and totals as structural chunks and windows prose with overlap; text-embedding-3-large into persistent FAISS.",
+        "LangGraph agent with a deterministic validation gate: arithmetic errors are fed back for re-extraction, and invoices failing twice are flagged for review.",
+        "59 offline tests in CI, covering MCP–REST parity, bearer auth and DNS-rebinding protection."
+      ],
+      github: "https://github.com/rohitjondhalems/invoicelens-mcp"
+    },
+    {
       title: "Supervisor Agent-Based Intent Routing",
       tag: "AskLANXESS",
       category: "genai",
